@@ -6,3 +6,6 @@ class Player:
 
     def is_alive(self):
         return self.health > 0
+
+    def take_damage(self, damage):
+        self.health = self.health - damage
