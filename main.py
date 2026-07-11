@@ -33,3 +33,8 @@ print()
 print("Enemy takes 15 damage")
 enemy.take_damage(15)
 print(enemy.health)
+
+print()
+
+hero.take_damage(999)
+print(hero.health)
