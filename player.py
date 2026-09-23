@@ -9,12 +9,18 @@ class Player:
         armor_class: int,
         attack_bonus: int,
         damage_die: int,
+        race,
+        char_class,
+        stats,
     ):
         self.name = name
         self.health = health
         self.armor_class = armor_class
         self.attack_bonus = attack_bonus
         self.damage_die = damage_die
+        self.race = race
+        self.char_class = char_class
+        self.stats = stats
 
     def is_alive(self):
         return self.health > 0

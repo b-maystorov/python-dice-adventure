@@ -1,11 +1,21 @@
 from player import Player
 from enemy import Enemy
+from classes import Warrior
+from races import Human
 
 # Ask the user for their character's name.
 player_name = input("Enter your hero's name: ")
 
 # Create both characters once so health persists between rounds.
-hero = Player(player_name, 30, 14, 3, 8)
+h_warrior = Warrior()
+h_human = Human()
+
+hero_stats = h_warrior.get_base_stats()
+h_human.apply_bonus(hero_stats)
+
+print(hero_stats)
+
+hero = Player(player_name, 30, 14, 3, 8, h_human, h_warrior, hero_stats)
 enemy = Enemy("Adrian", 20, 12, 2, 6)
 
 round_number = 1
