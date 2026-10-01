@@ -3,8 +3,9 @@ from stats import Stats
 
 class Warrior:
     name = "Warrior"
+    primary_stat = "strength"
 
-    def get_base_stats(self):
+    def get_base_stats(self) -> Stats:
         return Stats(
             strength=8,
             dexterity=4,
@@ -16,8 +17,9 @@ class Warrior:
 
 class Mage:
     name = "Mage"
+    primary_stat = "intelligence"
 
-    def get_base_stats(self):
+    def get_base_stats(self) -> Stats:
         return Stats(
             strength=2,
             dexterity=4,
@@ -29,8 +31,9 @@ class Mage:
 
 class Rogue:
     name = "Rogue"
+    primary_stat = "dexterity"
 
-    def get_base_stats(self):
+    def get_base_stats(self) -> Stats:
         return Stats(
             strength=4,
             dexterity=9,
@@ -42,8 +45,9 @@ class Rogue:
 
 class Hunter:
     name = "Hunter"
+    primary_stat = "dexterity"
 
-    def get_base_stats(self):
+    def get_base_stats(self) -> Stats:
         return Stats(
             strength=5,
             dexterity=8,
@@ -55,8 +59,9 @@ class Hunter:
 
 class Paladin:
     name = "Paladin"
+    primary_stat = "strength"
 
-    def get_base_stats(self):
+    def get_base_stats(self) -> Stats:
         return Stats(
             strength=7,
             dexterity=3,
@@ -68,8 +73,9 @@ class Paladin:
 
 class Necromancer:
     name = "Necromancer"
+    primary_stat = "intelligence"
 
-    def get_base_stats(self):
+    def get_base_stats(self) -> Stats:
         return Stats(
             strength=2,
             dexterity=3,

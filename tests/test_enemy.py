@@ -1,33 +1,44 @@
-import unittest
-
 from enemy import Enemy
 
 
-class TestEnemy(unittest.TestCase):
-    def test_take_damage_reduces_health(self):
-        enemy = Enemy("Test Enemy", 20, 12, 2, 6)
+def test_enemy_creation():
+    enemy = Enemy(
+        name="Goblin",
+        health=20,
+        armor_class=12,
+        attack_bonus=2,
+        damage_die=6,
+    )
 
-        enemy.take_damage(5)
-
-        self.assertEqual(enemy.health, 15)
-
-    def test_health_cannot_go_below_zero(self):
-        enemy = Enemy("Test Enemy", 20, 12, 2, 6)
-
-        enemy.take_damage(100)
-
-        self.assertEqual(enemy.health, 0)
-
-    def test_enemy_is_alive(self):
-        enemy = Enemy("Test Enemy", 20, 12, 2, 6)
-
-        self.assertTrue(enemy.is_alive())
-
-    def test_enemy_is_not_alive_at_zero_health(self):
-        enemy = Enemy("Test Enemy", 0, 12, 2, 6)
-
-        self.assertFalse(enemy.is_alive())
+    assert enemy.name == "Goblin"
+    assert enemy.health == 20
+    assert enemy.armor_class == 12
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_enemy_take_damage():
+    enemy = Enemy(
+        name="Goblin",
+        health=20,
+        armor_class=12,
+        attack_bonus=2,
+        damage_die=6,
+    )
+
+    enemy.take_damage(7)
+
+    assert enemy.health == 13
+
+
+def test_enemy_health_cannot_be_negative():
+    enemy = Enemy(
+        name="Goblin",
+        health=20,
+        armor_class=12,
+        attack_bonus=2,
+        damage_die=6,
+    )
+
+    enemy.take_damage(100)
+
+    assert enemy.health == 0
+    assert enemy.is_alive() is False

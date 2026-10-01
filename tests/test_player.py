@@ -1,33 +1,63 @@
-import unittest
-
 from player import Player
+from races import Human, Elf
+from classes import Warrior, Mage
 
 
-class TestPlayer(unittest.TestCase):
-    def test_take_damage_reduces_health(self):
-        player = Player("Test Hero", 30, 14, 3, 8)
+def test_human_warrior_creation():
+    player = Player(
+        name="Test Hero",
+        race=Human(),
+        char_class=Warrior(),
+    )
 
-        player.take_damage(5)
+    assert player.stats.strength == 9
+    assert player.stats.dexterity == 4
+    assert player.stats.intelligence == 3
+    assert player.stats.vitality == 8
 
-        self.assertEqual(player.health, 25)
-
-    def test_health_cannot_go_below_zero(self):
-        player = Player("Test Hero", 30, 14, 3, 8)
-
-        player.take_damage(100)
-
-        self.assertEqual(player.health, 0)
-
-    def test_player_is_alive(self):
-        player = Player("Test Hero", 30, 14, 3, 8)
-
-        self.assertTrue(player.is_alive())
-
-    def test_player_is_not_alive_at_zero_health(self):
-        player = Player("Test Hero", 0, 14, 3, 8)
-
-        self.assertFalse(player.is_alive())
+    assert player.max_health == 60
+    assert player.health == 60
+    assert player.armor_class == 14
+    assert player.attack_bonus == 4
+    assert player.damage_die == 8
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_elf_mage_creation():
+    player = Player(
+        name="Test Mage",
+        race=Elf(),
+        char_class=Mage(),
+    )
+
+    assert player.stats.strength == 1
+    assert player.stats.dexterity == 6
+    assert player.stats.intelligence == 11
+
+    assert player.primary_stat_value == 11
+    assert player.attack_bonus == 5
+    assert player.damage_die == 8
+
+
+def test_player_take_damage():
+    player = Player(
+        name="Test Hero",
+        race=Human(),
+        char_class=Warrior(),
+    )
+
+    player.take_damage(10)
+
+    assert player.health == 50
+
+
+def test_health_cannot_be_negative():
+    player = Player(
+        name="Test Hero",
+        race=Human(),
+        char_class=Warrior(),
+    )
+
+    player.take_damage(500)
+
+    assert player.health == 0
+    assert player.is_alive() is False

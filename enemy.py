@@ -16,24 +16,20 @@ class Enemy:
         self.attack_bonus = attack_bonus
         self.damage_die = damage_die
 
-    def is_alive(self):
+    def is_alive(self) -> bool:
         return self.health > 0
 
-    def take_damage(self, damage):
-        self.health = self.health - damage
+    def take_damage(self, damage: int) -> None:
+        self.health -= damage
 
         if self.health < 0:
             self.health = 0
 
-    def attack(self, target):
+    def attack(self, target) -> bool:
         attack_roll = roll_dice(20)
-        attack_roll += self.attack_bonus
+        total_attack = attack_roll + self.attack_bonus
 
-        if attack_roll >= target.armor_class:
-            return True
-        else:
-            return False
+        return total_attack >= target.armor_class
 
-    def roll_damage(self):
-        damage = roll_dice(self.damage_die)
-        return damage
+    def roll_damage(self) -> int:
+        return roll_dice(self.damage_die)
