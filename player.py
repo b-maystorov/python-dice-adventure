@@ -34,6 +34,10 @@ class Player:
         return self.primary_stat_value // 2
 
     @property
+    def critical_chance(self) -> int:
+        return self.stats.luck * 2
+
+    @property
     def damage_die(self) -> int:
         primary = self.primary_stat_value
 
