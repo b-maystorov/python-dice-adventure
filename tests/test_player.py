@@ -61,3 +61,13 @@ def test_health_cannot_be_negative():
 
     assert player.health == 0
     assert player.is_alive() is False
+
+
+def test_critical_chance():
+    player = Player(
+        name="Test Hero",
+        race=Human(),
+        char_class=Warrior(),
+    )
+
+    assert player.critical_chance == 6
