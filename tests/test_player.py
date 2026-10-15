@@ -71,3 +71,9 @@ def test_critical_chance():
     )
 
     assert player.critical_chance == 6
+
+
+def test_roll_critical_return_bool():
+    player = Player(name="Test Hero", race=Human(), char_class=Warrior())
+
+    player.roll_critical()

@@ -37,6 +37,10 @@ class Player:
     def critical_chance(self) -> int:
         return self.stats.luck * 2
 
+    def roll_critical(self) -> bool:
+        roll = roll_dice(100)
+        return roll <= self.critical_chance
+
     @property
     def damage_die(self) -> int:
         primary = self.primary_stat_value
