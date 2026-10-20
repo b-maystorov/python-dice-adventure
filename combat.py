@@ -1,6 +1,8 @@
 def player_attack(player, enemy):
     if player.attack(enemy):
         damage = player.roll_damage()
+        if player.roll_critical():
+            damage = damage * 2
         enemy.take_damage(damage)
 
         print(f"\n{player.name} hit {enemy.name}!")
